@@ -1,0 +1,12 @@
+torch>=2.3
+numpy>=1.24
+datasets>=2.19
+tokenizers>=0.19
+pyyaml>=6.0
+tqdm>=4.66
+safetensors>=0.4
+
+# optional
+# bitsandbytes>=0.43   # 8-bit AdamW for 24GB cards (optimizer: adamw8bit)
+# wandb>=0.17          # experiment tracking (set train.wandb_project)
+# transformers>=4.44   # to load/test the exported HF model

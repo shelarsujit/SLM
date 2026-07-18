@@ -1,0 +1,35 @@
+# ~1.0B parameter model (TinyLlama-shaped: 2048 dim, 22 layers, GQA 32/4).
+# Defaults fit a single 40-80GB GPU (A100/H100).
+# On a 24GB card (RTX 4090/3090): set optimizer: adamw8bit (pip install
+# bitsandbytes) and micro_batch_size: 4 / grad_accum_steps: 64.
+model:
+  vocab_size: 32768
+  d_model: 2048
+  n_layers: 22
+  n_heads: 32
+  n_kv_heads: 4
+  ffn_hidden: 5632
+  seq_len: 2048
+  tie_embeddings: true
+  grad_checkpoint: true
+
+train:
+  data_dir: data/fineweb-edu
+  out_dir: checkpoints/slm-1b
+  micro_batch_size: 8
+  grad_accum_steps: 32       # 8 * 32 * 2048 = 524k tokens/step
+  max_steps: 38000           # ~20B tokens (Chinchilla-optimal for 1B)
+  optimizer: adamw
+  lr: 4.0e-4
+  min_lr: 4.0e-5
+  warmup_steps: 2000
+  weight_decay: 0.1
+  grad_clip: 1.0
+  dtype: bfloat16
+  compile: true
+  log_interval: 10
+  eval_interval: 1000
+  eval_steps: 100
+  save_interval: 1000
+  keep_checkpoints: 3
+  wandb_project: ""
