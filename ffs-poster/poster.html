@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<title>FFS Fertilizer Poster</title>
+<style>
+@font-face{font-family:'Baloo 2';font-weight:700;src:url(fonts/f1.ttf)}
+@font-face{font-family:'Baloo 2';font-weight:800;src:url(fonts/f2.ttf)}
+@font-face{font-family:'Mukta';font-weight:500;src:url(fonts/f3.ttf)}
+@font-face{font-family:'Mukta';font-weight:700;src:url(fonts/f4.ttf)}
+@font-face{font-family:'Mukta';font-weight:800;src:url(fonts/f5.ttf)}
+@page{size:297mm 420mm;margin:0}
+:root{
+  --green:#1b7a34;--green-d:#0f5222;--green-l:#e6f4e9;
+  --orange:#e8641b;--orange-d:#b2440a;--orange-l:#fdeee3;
+  --yellow:#ffd23f;--ink:#1d1d1b;--muted:#4a4a46;--paper:#fffdf6;
+  --blue:#1565c0;--red:#c62828;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper)}
+body{width:297mm;height:420mm;font-family:'Mukta',sans-serif;color:var(--ink);overflow:hidden;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;position:relative}
+.emoji{font-family:'Noto Color Emoji';font-style:normal}
+.qrico{display:inline-block;width:1em;height:1em;vertical-align:middle}
+
+/* header */
+header{background:linear-gradient(135deg,var(--green-d),var(--green) 60%,#2f9a48);color:#fff;
+  padding:5mm 10mm 4.5mm;display:flex;align-items:center;gap:5mm;position:relative}
+header .big{font-size:20mm;line-height:1}
+header h1{font-family:'Baloo 2';font-weight:800;font-size:11mm;line-height:1.05;white-space:nowrap}
+header h1 span{color:var(--yellow)}
+header .sub{font-size:6mm;font-weight:700;margin-top:.5mm;line-height:1.1}
+header .en{font-size:4mm;font-weight:500;opacity:.92;margin-top:.5mm;line-height:1.15}
+.flow{display:flex;align-items:center;gap:2mm;margin-left:auto;background:rgba(0,0,0,.18);
+  border-radius:5mm;padding:2mm 3mm;font-size:7mm;gap:1mm;flex:none}
+.flow b{font-size:4.5mm;color:var(--yellow);line-height:1}
+
+/* ready strip */
+.ready{margin:5mm 10mm 0;border:1mm dashed var(--orange);border-radius:5mm;background:#fff;
+  display:flex;align-items:center;padding:2.5mm 5mm;gap:5mm}
+.ready h2{font-family:'Baloo 2';font-weight:800;font-size:7mm;color:var(--orange-d);line-height:1;white-space:nowrap}
+.ready h2 small{display:block;font-family:'Mukta';font-size:3.8mm;font-weight:700;color:var(--muted)}
+.ready .items{display:flex;gap:4mm;flex:1;justify-content:space-around}
+.ready .it{display:flex;align-items:center;gap:2mm}
+.ready .it i{font-size:11mm}
+.ready .it div{font-size:5mm;font-weight:800;line-height:1.05}
+.ready .it div small{display:block;font-size:3.4mm;font-weight:500;color:var(--muted)}
+
+/* section titles */
+.sec{margin:5mm 10mm 0;display:flex;align-items:center;gap:4mm;border-radius:4mm;color:#fff;padding:2mm 5mm}
+.sec.f{background:var(--green)}
+.sec.d{background:var(--orange)}
+.sec i{font-size:10mm}
+.sec h2{font-family:'Baloo 2';font-weight:800;font-size:9mm;line-height:1}
+.sec .en{font-size:4.5mm;font-weight:700;opacity:.95;margin-left:auto}
+
+/* farmer grid */
+.fgrid{margin:3mm 10mm 0;display:grid;grid-template-columns:repeat(3,1fr);gap:3.5mm}
+.card{background:#fff;border-radius:5mm;position:relative;display:flex;gap:3mm;padding:3mm;
+  box-shadow:0 .6mm 0 rgba(0,0,0,.08)}
+.fgrid .card{border:.7mm solid #b9dcc1;height:76mm}
+.num{position:absolute;top:-2mm;left:-2mm;width:13mm;height:13mm;border-radius:50%;
+  font-family:'Baloo 2';font-weight:800;font-size:9mm;display:flex;align-items:center;justify-content:center;
+  color:#fff;border:1mm solid #fff;z-index:3;box-shadow:0 .5mm 1mm rgba(0,0,0,.25)}
+.fgrid .num{background:var(--green);left:39.5mm;top:-2.5mm}
+.dgrid .num{background:var(--orange)}
+.txt{flex:1;display:flex;flex-direction:column;justify-content:center;gap:1.5mm;min-width:0}
+.txt .ico{font-size:13mm;line-height:1}
+.txt h3{font-family:'Baloo 2';font-weight:800;font-size:6.6mm;line-height:1.05;color:var(--green-d)}
+.dgrid .txt h3{color:var(--orange-d)}
+.txt p{font-size:4.3mm;font-weight:700;line-height:1.15}
+.txt .e{font-size:3.4mm;font-weight:500;color:var(--muted);line-height:1.15}
+.arrow{position:absolute;right:-4.6mm;top:50%;transform:translateY(-50%);z-index:4;
+  width:6mm;height:6mm;color:var(--green);font-size:7mm;font-weight:800;line-height:6mm;text-align:center}
+
+/* phone */
+.phone{width:36mm;height:70mm;flex:none;background:#222;border-radius:5mm;padding:2.2mm 1.4mm 3mm;
+  position:relative;box-shadow:0 1mm 2mm rgba(0,0,0,.3)}
+.phone::before{content:"";position:absolute;top:.8mm;left:50%;transform:translateX(-50%);width:8mm;height:.8mm;border-radius:1mm;background:#555}
+.scr{background:#fff;width:100%;height:100%;border-radius:2.4mm;overflow:hidden;font-size:2.35mm;line-height:1.2;display:flex;flex-direction:column}
+.bar{background:#0b6b3a;color:#fff;font-weight:700;padding:1.2mm 1.5mm;font-size:2.3mm;display:flex;align-items:center;gap:1mm}
+.bar .lg{width:3.6mm;height:3.6mm;border-radius:50%;background:#fff;color:#0b6b3a;font-size:2.4mm;display:flex;align-items:center;justify-content:center}
+.body{padding:1.6mm;display:flex;flex-direction:column;gap:1.3mm;flex:1}
+.lbl{font-weight:700;color:#333;font-size:2.2mm}
+.inp{border:.3mm solid #9aa;border-radius:.8mm;padding:1mm 1.2mm;font-size:2.4mm;color:#111;background:#fafafa}
+.btn{background:#0b6b3a;color:#fff;font-weight:800;text-align:center;border-radius:1mm;padding:1.3mm;font-size:2.5mm;position:relative}
+.btn.o{background:#e8641b}
+.tap{position:absolute;right:-1mm;bottom:-3.5mm;font-size:6mm}
+.hl{outline:.7mm solid #ffb300;outline-offset:.3mm;border-radius:1mm}
+.radio{display:flex;gap:1mm}
+.radio span{flex:1;border:.3mm solid #9aa;border-radius:.8mm;padding:.8mm;text-align:center;font-size:2.1mm}
+.radio span.on{background:#e6f4e9;border-color:#0b6b3a;font-weight:800;color:#0b6b3a}
+.chips{display:flex;flex-wrap:wrap;gap:.8mm}
+.chips span{border:.3mm solid #9aa;border-radius:3mm;padding:.5mm 1.3mm;font-size:2.1mm}
+.chips span.on{background:#0b6b3a;color:#fff;border-color:#0b6b3a;font-weight:700}
+.otp{display:flex;gap:.8mm;justify-content:center}
+.otp span{width:4mm;height:5mm;border:.3mm solid #0b6b3a;border-radius:.6mm;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:2.8mm}
+.row{display:flex;justify-content:space-between;align-items:center;border-bottom:.2mm solid #e3e3e3;padding:.5mm 0;font-size:2.2mm}
+.row b{font-weight:800}
+.qty{display:flex;align-items:center;gap:.6mm}
+.qty span{width:3mm;height:3mm;border:.3mm solid #0b6b3a;border-radius:.5mm;display:flex;align-items:center;justify-content:center;font-weight:800;color:#0b6b3a;font-size:2.2mm}
+.note{background:#fff7d6;border-radius:.8mm;padding:.8mm 1mm;font-size:2mm;color:#6a5200}
+.ok{color:#0b6b3a;font-weight:800;text-align:center;font-size:2.8mm}
+.qr{width:20mm;height:20mm;margin:0 auto;background:#fff;padding:.8mm;border:.3mm solid #ccc}
+.store{display:flex;gap:1.4mm;align-items:center}
+.appic{width:9mm;height:9mm;border-radius:2mm;background:linear-gradient(135deg,#0b6b3a,#4caf50);color:#fff;display:flex;align-items:center;justify-content:center;font-size:5.5mm}
+.search{border-radius:3mm;background:#eef1f3;padding:1mm 1.6mm;font-size:2.2mm;color:#333}
+.stars{color:#f5a623;font-size:2.2mm}
+
+/* dealer */
+.dgrid{margin:3mm 10mm 0;display:grid;grid-template-columns:repeat(5,1fr);gap:3.5mm}
+.dgrid .card{flex-direction:column;align-items:center;border:.7mm solid #f5c9ab;height:101mm;padding:3mm 2.5mm}
+.dgrid .txt{text-align:center;align-items:center;justify-content:flex-start;gap:.8mm}
+.dgrid .txt .ico{font-size:9mm}
+.dgrid .txt h3{font-size:5.6mm}
+.dgrid .txt p{font-size:3.9mm}
+.dgrid .txt .e{font-size:3.1mm}
+.dgrid .arrow{color:var(--orange)}
+.pos{width:38mm;height:58mm;flex:none;background:linear-gradient(#3b3f45,#24272b);border-radius:4mm 4mm 6mm 6mm;padding:3mm 2mm 2mm;position:relative;box-shadow:0 1mm 2mm rgba(0,0,0,.3)}
+.pos::before{content:"";position:absolute;top:-2.4mm;left:6mm;right:6mm;height:3mm;background:#ddd;border-radius:1mm 1mm 0 0}
+.pos .scr{height:41mm}
+.pos .bar{background:#b2440a;padding-left:5mm}
+.pos .btn{background:#e8641b}
+.pos .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:.8mm;margin-top:1.6mm}
+.pos .keys i{height:2.4mm;background:#555;border-radius:.6mm}
+.pos .keys i.g{background:#2e7d32}.pos .keys i.r{background:#c62828}.pos .keys i.y{background:#f9a825}
+.finger{width:13mm;height:13mm;margin:0 auto;border-radius:50%;background:#e8f5e9;border:.5mm solid #0b6b3a;display:flex;align-items:center;justify-content:center;font-size:8mm}
+.bill{font-family:monospace;font-size:1.9mm;background:#fff;border:.3mm dashed #999;padding:1mm}
+
+/* footer */
+.bottom{margin:4mm 10mm 0;display:grid;grid-template-columns:1.25fr 1fr;gap:4mm}
+.warn{background:#fdecea;border:.8mm solid var(--red);border-radius:5mm;padding:2.5mm 4mm;display:flex;gap:4mm;align-items:center}
+.warn i{font-size:13mm}
+.warn ul{list-style:none;display:flex;flex-direction:column;gap:.6mm}
+.warn li{font-size:4.1mm;font-weight:800;line-height:1.1}
+.warn li small{font-weight:500;color:var(--muted);font-size:3.3mm}
+.help{background:#e3f0fc;border:.8mm solid var(--blue);border-radius:5mm;padding:2.5mm 4mm;display:flex;gap:4mm;align-items:center}
+.help i{font-size:13mm}
+.help h4{font-family:'Baloo 2';font-weight:800;font-size:6mm;color:var(--blue);line-height:1}
+.help p{font-size:4.2mm;font-weight:700;line-height:1.15}
+.help .tel{font-family:'Baloo 2';font-weight:800;font-size:6.6mm;white-space:nowrap;color:#0d47a1;line-height:1}
+.help small{font-size:3.2mm;color:var(--muted);font-weight:500}
+.disc{position:absolute;bottom:3mm;left:10mm;right:10mm;font-size:2.9mm;color:var(--muted);text-align:center;line-height:1.2}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><symbol id="qr" viewBox="0 0 21 21" shape-rendering="crispEdges">
+            <rect width="21" height="21" fill="#fff"/>
+            <g fill="#111">
+              <path d="M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0z"/>
+            </g>
+            <g fill="#fff"><path d="M1 1h5v5H1zM15 1h5v5h-5zM1 15h5v5H1z"/></g>
+            <g fill="#111"><path d="M2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2z"/>
+              <path d="M8 0h1v2H8zM10 1h2v1h-2zM9 3h2v2H9zM12 3h1v3h-1zM8 6h1v2H8zM10 7h3v1h-3zM0 8h2v1H0zM3 8h2v2H3zM6 9h2v1H6zM9 9h1v3H9zM11 9h2v2h-2zM14 8h2v1h-2zM17 8h1v3h-1zM19 9h2v1h-2zM1 11h1v2H1zM4 11h3v1H4zM14 10h2v2h-2zM19 11h1v2h-1zM8 13h3v1H8zM12 12h2v2h-2zM16 13h2v1h-2zM8 15h1v3H8zM10 15h2v2h-2zM13 15h2v1h-2zM16 15h1v2h-1zM18 15h3v1h-3zM10 18h3v1h-3zM14 17h2v2h-2zM18 18h2v3h-2zM8 19h1v2H8zM12 20h3v1h-3z"/></g>
+          </symbol></svg>
+
+<header>
+  <div class="big emoji">🌾</div>
+  <div>
+    <h1>खत हवे? आधी <span>FFS ॲप</span>वर बुकिंग करा!</h1>
+    <div class="sub">“Framework for Fertilizer Sale” ॲप — सोप्या टप्प्यांत</div>
+    <div class="en">Need fertilizer? Book first on the FFS app, then collect at your Krushi Seva Kendra.</div>
+  </div>
+  <div class="flow"><i class="emoji">📱</i><b>➜</b><i><svg class="qrico" viewBox="0 0 21 21"><use href="#qr"/></svg></i><b>➜</b><i class="emoji">🏪</i><b>➜</b><i class="emoji">👍</i><b>➜</b><i class="emoji">🌱</i></div>
+</header>
+
+<div class="ready">
+  <h2>सोबत ठेवा<small>Keep ready</small></h2>
+  <div class="items">
+    <div class="it"><i class="emoji">🪪</i><div>आधार कार्ड<small>Aadhaar / Farmer ID</small></div></div>
+    <div class="it"><i class="emoji">📱</i><div>आधारशी जोडलेला मोबाईल<small>Aadhaar-linked mobile (for OTP)</small></div></div>
+    <div class="it"><i class="emoji">📜</i><div>७/१२ उतारा<small>Land record details</small></div></div>
+    <div class="it"><i class="emoji">🌿</i><div>पिकाची माहिती<small>Crop &amp; area (acre)</small></div></div>
+  </div>
+</div>
+
+<div class="sec f"><i class="emoji">👨‍🌾</i><h2>शेतकऱ्यांसाठी — मोबाईलवर ६ टप्पे</h2><div class="en">FOR FARMERS · 6 steps on mobile</div></div>
+
+<div class="fgrid">
+  <!-- 1 -->
+  <div class="card"><div class="num">1</div>
+    <div class="phone"><div class="scr">
+      <div class="bar" style="background:#fff;color:#333;border-bottom:.3mm solid #ddd">▶ Play Store</div>
+      <div class="body">
+        <div class="search">🔍 Framework for Fertilizer Sale</div>
+        <div class="store"><div class="appic emoji">🌾</div>
+          <div><b style="font-size:2.5mm">Framework for Fertilizer Sale</b><br><span style="color:#0b6b3a">AgriStack · Govt of India</span><br><span class="stars">★★★★☆</span></div></div>
+        <div class="btn hl" style="margin-top:1mm">Install<span class="tap emoji">👆</span></div>
+        <div style="display:flex;gap:1mm;margin-top:1mm">
+          <div style="flex:1;height:14mm;background:#e6f4e9;border-radius:1mm"></div>
+          <div style="flex:1;height:14mm;background:#fdeee3;border-radius:1mm"></div></div>
+        <div class="note">फक्त सरकारी ॲप डाउनलोड करा</div>
+      </div></div></div>
+    <div class="txt"><div class="ico emoji">⬇️</div>
+      <h3>ॲप डाउनलोड करा</h3>
+      <p>Play Store उघडा → “Framework for Fertilizer Sale” शोधा → <u>Install</u> दाबा.</p>
+      <div class="e">Open Play Store, search the app name, tap Install. It is free.</div></div>
+    <div class="arrow">➜</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card"><div class="num">2</div>
+    <div class="phone"><div class="scr">
+      <div class="bar"><span class="lg">🌾</span>Framework for Fertilizer Sale</div>
+      <div class="body">
+        <div class="lbl">भाषा / Language</div>
+        <div class="radio"><span class="on">मराठी</span><span>हिंदी</span><span>English</span></div>
+        <div class="lbl">लॉगिन करा / Login with</div>
+        <div class="radio"><span class="on">आधार</span><span>Farmer ID</span></div>
+        <div class="inp">XXXX XXXX 1234</div>
+        <div class="btn hl" style="margin-top:1mm">OTP पाठवा / Send OTP<span class="tap emoji">👆</span></div>
+        <div class="note" style="margin-top:auto">OTP आधारशी जोडलेल्या मोबाईलवर येईल</div>
+      </div></div></div>
+    <div class="txt"><div class="ico emoji">🪪</div>
+      <h3>आधार / Farmer ID टाका</h3>
+      <p>भाषा निवडा. आधार नंबर किंवा Farmer ID टाका → <u>Send OTP</u> दाबा.</p>
+      <div class="e">Choose language, enter Aadhaar number or Farmer ID, tap Send OTP.</div></div>
+    <div class="arrow">➜</div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card"><div class="num">3</div>
+    <div class="phone"><div class="scr">
+      <div class="bar"><span class="lg">🌾</span>OTP पडताळणी</div>
+      <div class="body">
+        <div style="text-align:center;font-size:7mm" class="emoji">💬</div>
+        <div class="lbl" style="text-align:center">मोबाईलवर आलेला OTP टाका<br><span style="font-weight:500">Enter OTP sent to ******7890</span></div>
+        <div class="otp"><span>4</span><span>7</span><span>2</span><span>9</span><span>1</span><span>6</span></div>
+        <div style="text-align:center;color:#1565c0;font-size:2.1mm">OTP पुन्हा पाठवा (00:45)</div>
+        <div class="btn hl">पुढे / Verify<span class="tap emoji">👆</span></div>
+        <div class="ok" style="margin-top:auto">✔ लॉगिन यशस्वी</div>
+      </div></div></div>
+    <div class="txt"><div class="ico emoji">🔢</div>
+      <h3>OTP टाका</h3>
+      <p>SMS ने आलेला ६ अंकी OTP टाका → <u>Verify</u> दाबा.</p>
+      <div class="e">Type the 6-digit OTP received by SMS and tap Verify.</div></div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card"><div class="num">4</div>
+    <div class="phone"><div class="scr">
+      <div class="bar"><span class="lg">🌾</span>पीक व जमीन</div>
+      <div class="body">
+        <div class="lbl">गट / सर्वे नंबर (७/१२)</div>
+        <div class="inp">गट नं. 245 — मौजे शिरूर ▾</div>
+        <div class="lbl">पीक निवडा / Crop</div>
+        <div class="chips"><span class="on">सोयाबीन</span><span>कापूस</span><span>ऊस</span><span>गहू</span><span>कांदा</span><span>तूर</span></div>
+        <div class="lbl">क्षेत्र / Area</div>
+        <div class="inp">2.0 एकर</div>
+        <div class="lbl">हंगाम / Season</div>
+        <div class="radio"><span class="on">खरीप</span><span>रब्बी</span><span>उन्हाळी</span></div>
+        <div class="btn hl" style="margin-top:auto">पुढे / Next<span class="tap emoji">👆</span></div>
+      </div></div></div>
+    <div class="txt"><div class="ico emoji">🌱</div>
+      <h3>पीक व जमीन निवडा</h3>
+      <p>तुमचा गट नंबर, पीक, एकर व हंगाम निवडा → <u>Next</u>.</p>
+      <div class="e">Select your land (survey no.), crop, area and season.</div></div>
+    <div class="arrow">➜</div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card"><div class="num">5</div>
+    <div class="phone"><div class="scr">
+      <div class="bar"><span class="lg">🌾</span>खत बुकिंग</div>
+      <div class="body">
+        <div class="note">सुचवलेले खत (२ एकर सोयाबीन)</div>
+        <div class="row"><span>युरिया 45kg</span><span class="qty"><span>−</span><b>2</b><span>+</span></span></div>
+        <div class="row"><span>DAP 50kg</span><span class="qty"><span>−</span><b>1</b><span>+</span></span></div>
+        <div class="row"><span>MOP 50kg</span><span class="qty"><span>−</span><b>1</b><span>+</span></span></div>
+        <div class="lbl">कृषी सेवा केंद्र निवडा</div>
+        <div class="inp hl">श्री गणेश कृषी सेवा केंद्र ▾</div>
+        <div class="btn" style="margin-top:auto">बुकिंग करा / Submit<span class="tap emoji">👆</span></div>
+      </div></div></div>
+    <div class="txt"><div class="ico emoji">🛒</div>
+      <h3>खत व दुकान निवडा</h3>
+      <p>ॲप खत सुचवेल. गरजेनुसार गोणी निवडा, जवळचे <u>कृषी सेवा केंद्र</u> निवडा → Submit.</p>
+      <div class="e">App suggests fertilizer. Choose bags (up to the limit) and your shop.</div></div>
+    <div class="arrow">➜</div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card"><div class="num">6</div>
+    <div class="phone"><div class="scr">
+      <div class="bar"><span class="lg">🌾</span>बुकिंग यशस्वी</div>
+      <div class="body" style="align-items:stretch">
+        <div class="ok">✔ बुकिंग झाले!</div>
+        <div class="qr">
+          <svg viewBox="0 0 21 21" width="100%" height="100%"><use href="#qr"/></svg>
+        </div>
+        <div style="text-align:center;font-weight:800;font-size:2.3mm">बुकिंग क्र. FFS-27-004581</div>
+        <div class="note" style="text-align:center">दुकानात हा QR दाखवा · ठरलेल्या दिवसांत खत घ्या</div>
+        <div class="btn o">⬇ QR सेव्ह करा / Download</div>
+      </div></div></div>
+    <div class="txt"><div class="ico"><svg class="qrico" viewBox="0 0 21 21"><use href="#qr"/></svg></div>
+      <h3>QR कोड जपून ठेवा</h3>
+      <p>QR कोड मिळेल. <u>स्क्रीनशॉट / Download</u> करा. ठरलेल्या दिवसांत दुकानात जा.</p>
+      <div class="e">Save the QR code. Visit the shop within the allowed days.</div></div>
+  </div>
+</div>
+
+<div class="sec d"><i class="emoji">🏪</i><h2>कृषी सेवा केंद्रात — दुकानदारासाठी ५ टप्पे</h2><div class="en">AT THE SHOP · for Krushi Seva Kendra owners</div></div>
+
+<div class="dgrid">
+  <!-- D1 -->
+  <div class="card"><div class="num">1</div>
+    <div class="pos"><div class="scr">
+      <div class="bar">FFS · Retailer</div>
+      <div class="body" style="align-items:center">
+        <div class="lbl">शेतकऱ्याचा QR स्कॅन करा</div>
+        <div style="width:22mm;height:22mm;border:.6mm solid #e8641b;border-radius:1.5mm;position:relative;display:flex;align-items:center;justify-content:center">
+          <div style="font-size:14mm;line-height:1"><svg class="qrico" viewBox="0 0 21 21"><use href="#qr"/></svg></div>
+          <div style="position:absolute;left:0;right:0;top:50%;height:.6mm;background:#e53935"></div></div>
+        <div style="font-size:2mm;color:#555">किंवा बुकिंग क्र. टाका</div>
+      </div></div>
+      <div class="keys"><i></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i><i class="y"></i><i></i><i></i><i></i><i class="g"></i></div></div>
+    <div class="txt"><div class="ico emoji">📷</div>
+      <h3>QR स्कॅन करा</h3>
+      <p>शेतकऱ्याच्या मोबाईलवरील QR, POS मशीन / ॲपने स्कॅन करा.</p>
+      <div class="e">Scan the farmer's QR on the PoS / retailer app.</div></div>
+    <div class="arrow">➜</div>
+  </div>
+
+  <!-- D2 -->
+  <div class="card"><div class="num">2</div>
+    <div class="pos"><div class="scr">
+      <div class="bar">बुकिंग तपशील</div>
+      <div class="body">
+        <div class="row"><span>नाव</span><b>रामराव पाटील</b></div>
+        <div class="row"><span>बुकिंग</span><b>FFS-27-004581</b></div>
+        <div class="row"><span>युरिया</span><b>2 गोणी</b></div>
+        <div class="row"><span>DAP</span><b>1 गोणी</b></div>
+        <div class="row"><span>MOP</span><b>1 गोणी</b></div>
+        <div class="ok" style="font-size:2.3mm">✔ वैध बुकिंग</div>
+      </div></div>
+      <div class="keys"><i></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i><i class="y"></i><i></i><i></i><i></i><i class="g"></i></div></div>
+    <div class="txt"><div class="ico emoji">📋</div>
+      <h3>तपशील तपासा</h3>
+      <p>नाव व बुक केलेले खत पाहा. आधार कार्ड पाहून ओळख पटवा.</p>
+      <div class="e">Check name &amp; booked bags. Match with the farmer.</div></div>
+    <div class="arrow">➜</div>
+  </div>
+
+  <!-- D3 -->
+  <div class="card"><div class="num">3</div>
+    <div class="pos"><div class="scr">
+      <div class="bar">आधार पडताळणी</div>
+      <div class="body" style="align-items:center">
+        <div class="lbl" style="text-align:center">शेतकऱ्याचा अंगठा स्कॅनरवर ठेवा</div>
+        <div class="finger emoji">👆</div>
+        <div class="ok" style="font-size:2.3mm">✔ अंगठा जुळला</div>
+        <div style="font-size:2mm;color:#555">अंगठा न जुळल्यास: OTP</div>
+      </div></div>
+      <div class="keys"><i></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i><i class="y"></i><i></i><i></i><i></i><i class="g"></i></div></div>
+    <div class="txt"><div class="ico emoji">👍</div>
+      <h3>अंगठा लावा</h3>
+      <p>शेतकऱ्याचा अंगठा (बायोमेट्रिक) किंवा OTP ने पडताळणी करा.</p>
+      <div class="e">Aadhaar biometric (thumb) or OTP check.</div></div>
+    <div class="arrow">➜</div>
+  </div>
+
+  <!-- D4 -->
+  <div class="card"><div class="num">4</div>
+    <div class="pos"><div class="scr">
+      <div class="bar">विक्री / Sale</div>
+      <div class="body">
+        <div class="row"><span>युरिया ×2</span><b>₹532</b></div>
+        <div class="row"><span>DAP ×1</span><b>₹1350</b></div>
+        <div class="row"><span>MOP ×1</span><b>₹1700</b></div>
+        <div class="row" style="border:0"><b>एकूण</b><b>₹3582</b></div>
+        <div class="radio"><span class="on">रोख</span><span>UPI</span></div>
+        <div class="btn">पैसे घेतले / Confirm</div>
+      </div></div>
+      <div class="keys"><i></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i><i class="y"></i><i></i><i></i><i></i><i class="g"></i></div></div>
+    <div class="txt"><div class="ico emoji">💰</div>
+      <h3>खत व पैसे</h3>
+      <p>बुकिंगइतकेच खत निवडा. छापील किमतीनेच (MRP) पैसे घ्या.</p>
+      <div class="e">Sell only booked quantity, at MRP. Take payment.</div></div>
+    <div class="arrow">➜</div>
+  </div>
+
+  <!-- D5 -->
+  <div class="card"><div class="num">5</div>
+    <div class="pos"><div class="scr">
+      <div class="bar">पावती / Bill</div>
+      <div class="body">
+        <div class="bill">श्री गणेश कृषी सेवा केंद्र<br>बिल नं. 1182 · 21/10<br>युरिया 2 ... ₹532<br>DAP 1 ...... ₹1350<br>MOP 1 ...... ₹1700<br>एकूण ....... ₹3582</div>
+        <div class="btn">🖨 प्रिंट / Print</div>
+      </div></div>
+      <div class="keys"><i></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i><i class="y"></i><i></i><i></i><i></i><i class="g"></i></div></div>
+    <div class="txt"><div class="ico emoji">🧾</div>
+      <h3>पावती द्या</h3>
+      <p>पावती प्रिंट करा. खताच्या गोणी व पावती शेतकऱ्याला द्या.</p>
+      <div class="e">Print the bill. Hand over bags + bill.</div></div>
+  </div>
+</div>
+
+<div class="bottom">
+  <div class="warn"><i class="emoji">⚠️</i>
+    <ul>
+      <li>🚫 OTP कोणालाही सांगू नका <small>· Never share OTP</small></li>
+      <li>🧾 पावती नक्की घ्या <small>· Always take the bill</small></li>
+      <li>💯 छापील किमतीपेक्षा जास्त पैसे देऊ नका <small>· Pay only MRP</small></li>
+      <li>🤝 ॲप येत नसेल? दुकानदार / CSC केंद्र मदत करेल <small>· Shop/CSC can book for you</small></li>
+    </ul></div>
+  <div class="help"><i class="emoji">☎️</i>
+    <div>
+      <h4>मदत हवी? / Help</h4>
+      <p>गावचे कृषी सहायक किंवा तालुका कृषी अधिकारी</p>
+      <div class="tel">किसान कॉल सेंटर 1800-180-1551</div>
+      <small>Kisan Call Centre · मोफत / toll-free</small>
+    </div></div>
+</div>
+
+<div class="disc">ॲपची चित्रे समजण्यासाठी दाखवलेली उदाहरणे आहेत; खरी स्क्रीन थोडी वेगळी असू शकते. नावे, किंमती व क्रमांक काल्पनिक. बुकिंगची वैधता व नियम जिल्ह्यानुसार बदलू शकतात — कृषी सहायकांकडे खात्री करा.<br>
+Screens are illustrations of the government “Framework for Fertilizer Sale” app; the real app may look different. Names, prices and numbers are examples only. Rules vary by district.</div>
+
+</body>
+</html>
